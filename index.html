@@ -1,0 +1,2165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RS Sports - Premium Cricket Store</title>
+    <style>
+        /* ===== THEME VARIABLES ===== */
+        :root {
+            --bg: #f7f8fa;
+            --surface: #ffffff;
+            --text: #1a1a2e;
+            --text-secondary: #6b7280;
+            --primary: #1a56db;
+            --primary-hover: #1e40af;
+            --accent: #dc2626;
+            --accent-hover: #b91c1c;
+            --gold: #d97706;
+            --border: #e5e7eb;
+            --shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --footer-bg: #111827;
+            --footer-text: #9ca3af;
+            --input-bg: #ffffff;
+            --hover-bg: #f3f4f6;
+            --card-hover: #f9fafb;
+            --badge-sale: #dc2626;
+            --badge-new: #16a34a;
+            --overlay: rgba(0, 0, 0, 0.65);
+            --hero-overlay: linear-gradient(135deg, rgba(17, 24, 39, 0.85), rgba(26, 86, 219, 0.65));
+        }
+        [data-theme="dark"] {
+            --bg: #0d1117;
+            --surface: #161b22;
+            --text: #e6edf3;
+            --text-secondary: #8b949e;
+            --primary: #4493f8;
+            --primary-hover: #1f6feb;
+            --accent: #f85149;
+            --accent-hover: #da3633;
+            --gold: #d29922;
+            --border: #30363d;
+            --shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.45);
+            --nav-bg: rgba(13, 17, 23, 0.95);
+            --footer-bg: #010409;
+            --footer-text: #8b949e;
+            --input-bg: #0d1117;
+            --hover-bg: #1c2128;
+            --card-hover: #1a2029;
+            --badge-sale: #f85149;
+            --badge-new: #3fb950;
+            --overlay: rgba(0, 0, 0, 0.7);
+            --hero-overlay: linear-gradient(135deg, rgba(1, 4, 9, 0.9), rgba(68, 147, 248, 0.55));
+        }
+        [data-theme="mono"] {
+            --bg: #1a1a1a;
+            --surface: #242424;
+            --text: #f0f0f0;
+            --text-secondary: #a0a0a0;
+            --primary: #ffffff;
+            --primary-hover: #d0d0d0;
+            --accent: #cccccc;
+            --accent-hover: #aaaaaa;
+            --gold: #cccccc;
+            --border: #3a3a3a;
+            --shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.5);
+            --nav-bg: rgba(26, 26, 26, 0.95);
+            --footer-bg: #0a0a0a;
+            --footer-text: #888888;
+            --input-bg: #1a1a1a;
+            --hover-bg: #2a2a2a;
+            --card-hover: #2a2a2a;
+            --badge-sale: #ffffff;
+            --badge-new: #cccccc;
+            --overlay: rgba(0, 0, 0, 0.75);
+            --hero-overlay: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(50, 50, 50, 0.7));
+        }
+        [data-theme="beige"] {
+            --bg: #f5f0e8;
+            --surface: #fffcf5;
+            --text: #2c2c2c;
+            --text-secondary: #6b6b6b;
+            --primary: #8b7355;
+            --primary-hover: #6d5a42;
+            --accent: #c4a882;
+            --accent-hover: #a8906d;
+            --gold: #b8860b;
+            --border: #e0d5c7;
+            --shadow: 0 2px 16px rgba(139, 115, 85, 0.12);
+            --shadow-hover: 0 8px 32px rgba(139, 115, 85, 0.22);
+            --nav-bg: rgba(255, 252, 245, 0.95);
+            --footer-bg: #2c2c2c;
+            --footer-text: #c0c0c0;
+            --input-bg: #fffcf5;
+            --hover-bg: #f0e8dc;
+            --card-hover: #faf5ed;
+            --badge-sale: #b91c1c;
+            --badge-new: #15803d;
+            --overlay: rgba(44, 44, 44, 0.6);
+            --hero-overlay: linear-gradient(135deg, rgba(44, 44, 44, 0.8), rgba(139, 115, 85, 0.55));
+        }
+        [data-theme="midnight"] {
+            --bg: #0a0a1a;
+            --surface: #111128;
+            --text: #d0d0e0;
+            --text-secondary: #8888aa;
+            --primary: #ffd700;
+            --primary-hover: #e6c200;
+            --accent: #ff6b6b;
+            --accent-hover: #e55555;
+            --gold: #ffd700;
+            --border: #1a1a3a;
+            --shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.6);
+            --nav-bg: rgba(10, 10, 20, 0.95);
+            --footer-bg: #050510;
+            --footer-text: #8888aa;
+            --input-bg: #0a0a1a;
+            --hover-bg: #1a1a35;
+            --card-hover: #15152d;
+            --badge-sale: #ff6b6b;
+            --badge-new: #50fa7b;
+            --overlay: rgba(0, 0, 0, 0.75);
+            --hero-overlay: linear-gradient(135deg, rgba(5, 5, 16, 0.9), rgba(255, 215, 0, 0.4));
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-hover);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        button {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+            outline: none;
+        }
+        input,
+        textarea {
+            font-family: inherit;
+            outline: none;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        ul {
+            list-style: none;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            background: var(--nav-bg);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 64px;
+            gap: 16px;
+            flex-wrap: nowrap;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+        .logo .rs-highlight {
+            color: var(--accent);
+            font-weight: 900;
+        }
+        .nav-links {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .nav-links::-webkit-scrollbar {
+            display: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 14px;
+            white-space: nowrap;
+            transition: all 0.2s;
+            letter-spacing: 0.2px;
+            position: relative;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--hover-bg);
+            color: var(--primary);
+        }
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 1px;
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--input-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0 12px;
+            height: 38px;
+            gap: 8px;
+            width: 220px;
+            transition: all 0.25s;
+        }
+        .search-box:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.12);
+            width: 280px;
+        }
+        .search-box input {
+            border: none;
+            background: transparent;
+            color: var(--text);
+            font-size: 14px;
+            width: 100%;
+            padding: 0;
+        }
+        .search-box input::placeholder {
+            color: var(--text-secondary);
+        }
+        .search-box svg {
+            width: 16px;
+            height: 16px;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+        .theme-selector {
+            position: relative;
+        }
+        .theme-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--hover-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            height: 38px;
+            padding: 0 12px;
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .theme-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .theme-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+        .theme-dropdown {
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            box-shadow: var(--shadow-hover);
+            min-width: 200px;
+            padding: 6px;
+            display: none;
+            z-index: 100;
+        }
+        .theme-dropdown.open {
+            display: block;
+            animation: dropdownIn 0.2s ease;
+        }
+        @keyframes dropdownIn {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 12px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text);
+            transition: all 0.15s;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+        }
+        .theme-option:hover {
+            background: var(--hover-bg);
+        }
+        .theme-option.active-theme {
+            background: var(--hover-bg);
+            color: var(--primary);
+        }
+        .theme-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            flex-shrink: 0;
+        }
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 6px;
+        }
+        .hamburger svg {
+            width: 22px;
+            height: 22px;
+            color: var(--text);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 70px 24px;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--hero-overlay);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 750px;
+        }
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 16px;
+            text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+            letter-spacing: -0.5px;
+            animation: fadeInUp 0.8s ease;
+        }
+        .hero .animated-text-wrap {
+            font-size: 22px;
+            color: #dbeafe;
+            font-weight: 500;
+            margin-bottom: 22px;
+            min-height: 34px;
+            animation: fadeInUp 0.8s ease 0.25s both;
+        }
+        .hero .animated-text-wrap .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 24px;
+            background: #dbeafe;
+            margin-left: 2px;
+            vertical-align: middle;
+            animation: cursorBlink 0.7s infinite;
+        }
+        @keyframes cursorBlink {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero p {
+            font-size: 16px;
+            color: #e5e7eb;
+            margin-bottom: 28px;
+            animation: fadeInUp 0.8s ease 0.5s both;
+            line-height: 1.7;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.7s both;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            padding: 13px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 2px solid var(--primary);
+            transition: all 0.25s;
+            letter-spacing: 0.3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            border-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            padding: 13px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.25s;
+            letter-spacing: 0.3px;
+        }
+        .btn-outline:hover {
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 70px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .section:last-of-type {
+            border-bottom: none;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+        .section-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        .section-divider {
+            width: 48px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            margin: 14px auto 0;
+        }
+
+        /* ===== PRODUCTS ===== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 22px;
+        }
+        .product-card {
+            background: var(--surface);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+        .product-image {
+            height: 190px;
+            overflow: hidden;
+            position: relative;
+            background: var(--hover-bg);
+            flex-shrink: 0;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.45s;
+        }
+        .product-card:hover .product-image img {
+            transform: scale(1.06);
+        }
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 1;
+            color: #fff;
+        }
+        .product-badge.sale {
+            background: var(--badge-sale);
+        }
+        .product-badge.new {
+            background: var(--badge-new);
+        }
+        .product-info {
+            padding: 18px 16px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-info h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+        .product-price {
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .product-old-price {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+        .product-buttons {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-buy {
+            background: var(--primary);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 12px;
+            transition: all 0.2s;
+            letter-spacing: 0.2px;
+            flex: 1;
+            min-width: 80px;
+        }
+        .btn-buy:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+        .btn-cart {
+            background: var(--surface);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 12px;
+            border: 1px solid var(--primary);
+            transition: all 0.2s;
+            flex: 1;
+            min-width: 80px;
+        }
+        .btn-cart:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== SERVICES ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .service-card {
+            background: var(--surface);
+            padding: 28px 24px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+        .service-icon {
+            font-size: 36px;
+            margin-bottom: 14px;
+            display: block;
+            color: var(--primary);
+        }
+        .service-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* ===== WHY US ===== */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+        .why-item {
+            text-align: center;
+            padding: 24px 16px;
+            background: var(--surface);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: all 0.25s;
+        }
+        .why-item:hover {
+            transform: scale(1.04);
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+        .why-item .why-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+            display: block;
+            color: var(--gold);
+        }
+        .why-item h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text);
+        }
+        .why-item p {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== REVIEWS ===== */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .review-card {
+            background: var(--surface);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.25s;
+        }
+        .review-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--gold);
+        }
+        .review-stars {
+            color: var(--gold);
+            font-size: 15px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .review-card p {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-bottom: 14px;
+            font-style: italic;
+            line-height: 1.7;
+        }
+        .review-card .reviewer {
+            font-weight: 700;
+            color: var(--text);
+            font-style: normal;
+            font-size: 13px;
+        }
+        .review-card .reviewer-role {
+            color: var(--text-secondary);
+            font-size: 11px;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-wrapper {
+            max-width: 560px;
+            margin: 0 auto;
+            background: var(--surface);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        .contact-wrapper label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+        .contact-wrapper input,
+        .contact-wrapper textarea {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 16px;
+            border-radius: 7px;
+            border: 1px solid var(--border);
+            background: var(--input-bg);
+            color: var(--text);
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .contact-wrapper input:focus,
+        .contact-wrapper textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
+        }
+        .contact-wrapper textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+        .contact-wrapper .btn-primary {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ===== CART DRAWER ===== */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            display: none;
+        }
+        .cart-overlay.open {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 400px;
+            max-width: 90vw;
+            height: 100%;
+            background: var(--surface);
+            z-index: 2001;
+            box-shadow: -4px 0 32px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-drawer.open {
+            right: 0;
+        }
+        .cart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+        .cart-header h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .cart-close {
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .cart-close:hover {
+            background: var(--hover-bg);
+            color: var(--text);
+        }
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+        .cart-item img {
+            width: 52px;
+            height: 52px;
+            object-fit: cover;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+        .cart-item-info {
+            flex: 1;
+            min-width: 110px;
+        }
+        .cart-item-info h4 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+        .cart-item-info .cart-price {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .qty-btn {
+            background: var(--hover-bg);
+            border: 1px solid var(--border);
+            width: 26px;
+            height: 26px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .qty-btn:hover {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+        .qty-display {
+            font-weight: 700;
+            font-size: 13px;
+            min-width: 20px;
+            text-align: center;
+            color: var(--text);
+        }
+        .cart-remove {
+            background: none;
+            border: none;
+            color: var(--accent);
+            cursor: pointer;
+            font-size: 16px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            transition: all 0.15s;
+        }
+        .cart-remove:hover {
+            background: rgba(220, 38, 38, 0.1);
+        }
+        .cart-empty {
+            text-align: center;
+            color: var(--text-secondary);
+            padding: 40px 0;
+            font-size: 14px;
+        }
+        .cart-footer {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+        .cart-total .total-amount {
+            font-size: 20px;
+            color: var(--primary);
+        }
+        .cart-checkout {
+            width: 100%;
+            background: var(--primary);
+            color: #fff;
+            padding: 13px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.25s;
+        }
+        .cart-checkout:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1500;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.25s;
+            animation: whatsappPulse 2.5s infinite;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.55);
+            animation: none;
+        }
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: #fff;
+        }
+        @keyframes whatsappPulse {
+            0% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0.3);
+            }
+            70% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4), 0 0 0 16px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* ===== CHATBOT ===== */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 1500;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            transition: all 0.25s;
+            border: none;
+        }
+        .chatbot-toggle:hover {
+            background: var(--primary-hover);
+            transform: scale(1.08);
+        }
+        .chatbot-toggle svg {
+            width: 26px;
+            height: 26px;
+            fill: #fff;
+        }
+        .chatbot-window {
+            position: fixed;
+            bottom: 90px;
+            left: 24px;
+            width: 350px;
+            max-width: 90vw;
+            background: var(--surface);
+            border-radius: 14px;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+            z-index: 1499;
+            display: none;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            animation: slideUp 0.3s ease;
+        }
+        .chatbot-window.open {
+            display: flex;
+            flex-direction: column;
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .chatbot-header {
+            background: var(--primary);
+            color: #fff;
+            padding: 14px 18px;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .chatbot-header button {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 0 4px;
+        }
+        .chatbot-messages {
+            padding: 14px 16px;
+            height: 280px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: var(--bg);
+        }
+        .chat-message {
+            padding: 10px 14px;
+            border-radius: 10px;
+            max-width: 82%;
+            font-size: 13px;
+            line-height: 1.6;
+            word-wrap: break-word;
+        }
+        .chat-message.bot {
+            background: var(--surface);
+            color: var(--text);
+            align-self: flex-start;
+            border-bottom-left-radius: 3px;
+            border: 1px solid var(--border);
+        }
+        .chat-message.user {
+            background: var(--primary);
+            color: #fff;
+            align-self: flex-end;
+            border-bottom-right-radius: 3px;
+        }
+        .chatbot-input {
+            display: flex;
+            gap: 8px;
+            padding: 12px 14px;
+            border-top: 1px solid var(--border);
+            background: var(--surface);
+            flex-shrink: 0;
+        }
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px 12px;
+            border-radius: 7px;
+            border: 1px solid var(--border);
+            background: var(--input-bg);
+            color: var(--text);
+            font-size: 13px;
+        }
+        .chatbot-input input:focus {
+            border-color: var(--primary);
+        }
+        .chatbot-input button {
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 7px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .chatbot-input button:hover {
+            background: var(--primary-hover);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 50px 0 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-bottom: 36px;
+        }
+        .footer-col h3 {
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            letter-spacing: 0.3px;
+        }
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        .footer-col ul li a {
+            color: var(--footer-text);
+            font-size: 13px;
+            transition: all 0.2s;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .footer-col ul li a:hover {
+            color: #fff;
+            transform: translateX(3px);
+        }
+        .footer-about {
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            color: var(--footer-text);
+        }
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            font-size: 15px;
+            transition: all 0.25s;
+        }
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 12px;
+            color: var(--footer-text);
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .search-box {
+                width: 160px;
+            }
+            .search-box:focus-within {
+                width: 200px;
+            }
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 16px;
+                height: 58px;
+                gap: 10px;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--nav-bg);
+                border-bottom: 1px solid var(--border);
+                padding: 10px 16px;
+                flex-direction: column;
+                align-items: stretch;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-links a {
+                padding: 10px 14px;
+                font-size: 14px;
+                text-align: left;
+            }
+            .hamburger {
+                display: block;
+            }
+            .search-box {
+                width: 130px;
+                height: 34px;
+            }
+            .search-box:focus-within {
+                width: 170px;
+            }
+            .hero {
+                min-height: 60vh;
+                padding: 50px 16px;
+                background-attachment: scroll;
+            }
+            .hero h1 {
+                font-size: 28px;
+            }
+            .hero .animated-text-wrap {
+                font-size: 17px;
+                min-height: 28px;
+            }
+            .hero p {
+                font-size: 14px;
+            }
+            .btn-primary,
+            .btn-outline {
+                padding: 11px 22px;
+                font-size: 13px;
+            }
+            .section {
+                padding: 50px 0;
+            }
+            .section-header h2 {
+                font-size: 25px;
+            }
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 12px;
+            }
+            .product-image {
+                height: 130px;
+            }
+            .product-info {
+                padding: 12px 10px;
+            }
+            .product-info h3 {
+                font-size: 13px;
+            }
+            .product-price {
+                font-size: 15px;
+            }
+            .product-buttons {
+                flex-direction: column;
+                gap: 4px;
+            }
+            .btn-buy,
+            .btn-cart {
+                font-size: 11px;
+                padding: 7px 10px;
+            }
+            .whatsapp-float,
+            .chatbot-toggle {
+                width: 48px;
+                height: 48px;
+                bottom: 16px;
+            }
+            .whatsapp-float {
+                right: 16px;
+            }
+            .chatbot-toggle {
+                left: 16px;
+            }
+            .whatsapp-float svg {
+                width: 24px;
+                height: 24px;
+            }
+            .chatbot-toggle svg {
+                width: 22px;
+                height: 22px;
+            }
+            .chatbot-window {
+                width: 300px;
+                bottom: 76px;
+                left: 16px;
+            }
+            .cart-drawer {
+                width: 340px;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 22px;
+            }
+            .hero .animated-text-wrap {
+                font-size: 14px;
+            }
+            .section-header h2 {
+                font-size: 21px;
+            }
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .product-image {
+                height: 110px;
+            }
+            .contact-wrapper {
+                padding: 20px;
+            }
+            .services-grid,
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="logo" onclick="scrollToTop()">R<span class="rs-highlight">S</span></div>
+        <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Toggle navigation">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <div class="nav-links" id="navLinks">
+            <a href="#home" class="active" onclick="setActive(this)">Home</a>
+            <a href="#products" onclick="setActive(this)">Products</a>
+            <a href="#services" onclick="setActive(this)">Services</a>
+            <a href="#why-us" onclick="setActive(this)">Why Us</a>
+            <a href="#reviews" onclick="setActive(this)">Reviews</a>
+            <a href="#contact" onclick="setActive(this)">Contact</a>
+            <a href="#" onclick="openCart(); return false;">Cart <span id="cartBadge" style="background:var(--primary);color:#fff;padding:1px 7px;border-radius:10px;font-size:11px;font-weight:700;margin-left:3px;">0</span></a>
+        </div>
+        <div class="nav-actions">
+            <div class="search-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <input type="text" id="searchInput" placeholder="Search products..." oninput="handleSearch(this.value)">
+            </div>
+            <div class="theme-selector">
+                <button class="theme-btn" onclick="toggleThemeDropdown()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    Theme
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="theme-dropdown" id="themeDropdown">
+                    <button class="theme-option" data-theme="light" onclick="setTheme('light')">
+                        <span class="theme-dot" style="background:#ffffff;border-color:#d1d5db;"></span> Light
+                    </button>
+                    <button class="theme-option" data-theme="dark" onclick="setTheme('dark')">
+                        <span class="theme-dot" style="background:#0d1117;border-color:#30363d;"></span> Dark
+                    </button>
+                    <button class="theme-option" data-theme="mono" onclick="setTheme('mono')">
+                        <span class="theme-dot" style="background:#1a1a1a;border-color:#3a3a3a;"></span> Monochrome
+                    </button>
+                    <button class="theme-option" data-theme="beige" onclick="setTheme('beige')">
+                        <span class="theme-dot" style="background:#f5f0e8;border-color:#d4c5b2;"></span> Beige
+                    </button>
+                    <button class="theme-option" data-theme="midnight" onclick="setTheme('midnight')">
+                        <span class="theme-dot" style="background:#0a0a1a;border-color:#ffd700;"></span> Midnight Navy
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>RS Sports Store</h1>
+            <div class="animated-text-wrap" id="animatedText"></div>
+            <p>Premium cricket equipment at affordable prices. Quality gear for every player, from beginners to professionals.</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn-primary" onclick="setActiveLink('products')">Shop Now</a>
+                <a href="#services" class="btn-outline" onclick="setActiveLink('services')">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCTS SECTION ===== -->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Cricket Products</h2>
+                <div class="section-divider"></div>
+                <p>Browse our complete collection of quality cricket gear, all under Rs. 5,000</p>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES SECTION ===== -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <div class="section-divider"></div>
+                <p>Professional cricket services tailored for every player</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">&#128736;</span>
+                    <h3>Bat Repair & Customization</h3>
+                    <p>Professional bat knocking, grip replacement, and weight adjustment services.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">&#127951;</span>
+                    <h3>Equipment Rental</h3>
+                    <p>Rent complete cricket kits for tournaments, events, and practice sessions.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">&#128085;</span>
+                    <h3>Team Uniforms</h3>
+                    <p>Custom-designed cricket jerseys and complete team kits with your branding.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">&#127919;</span>
+                    <h3>Coaching & Training</h3>
+                    <p>Expert coaching from certified trainers for all skill levels.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">&#128230;</span>
+                    <h3>Bulk Orders</h3>
+                    <p>Special pricing for clubs, schools, and cricket academies.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">&#127942;</span>
+                    <h3>Tournament Support</h3>
+                    <p>Complete equipment support for local and regional cricket tournaments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHY US SECTION ===== -->
+    <section class="section" id="why-us">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose RS Sports</h2>
+                <div class="section-divider"></div>
+                <p>We go above and beyond to serve our customers</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-item">
+                    <span class="why-icon">&#127941;</span>
+                    <h4>Certified Products</h4>
+                    <p>All gear is verified and quality-tested</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-icon">&#9889;</span>
+                    <h4>Fast Delivery</h4>
+                    <p>Quick shipping across Pakistan</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-icon">&#128176;</span>
+                    <h4>Best Prices</h4>
+                    <p>Affordable rates under Rs. 5,000</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-icon">&#128260;</span>
+                    <h4>Easy Returns</h4>
+                    <p>7-day hassle-free return policy</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-icon">&#128309;</span>
+                    <h4>Expert Advice</h4>
+                    <p>Guidance from cricket professionals</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-icon">&#128274;</span>
+                    <h4>Secure Payments</h4>
+                    <p>Safe and reliable payment options</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== REVIEWS SECTION ===== -->
+    <section class="section" id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <h2>Customer Reviews</h2>
+                <div class="section-divider"></div>
+                <p>What our valued customers say about us</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Best cricket store in the city. The bat quality is excellent and delivery was very fast."</p>
+                    <span class="reviewer">Ahmed Raza</span>
+                    <span class="reviewer-role"> - Club Player</span>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Purchased a complete kit for my son. Great quality and very reasonable prices."</p>
+                    <span class="reviewer">Muhammad Imran</span>
+                    <span class="reviewer-role"> - Parent</span>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Excellent customer service. They helped me choose the right bat for my playing style."</p>
+                    <span class="reviewer">Bilal Khan</span>
+                    <span class="reviewer-role"> - Amateur Player</span>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Custom jerseys for our team were top-notch. Will definitely order more."</p>
+                    <span class="reviewer">Hassan Ali</span>
+                    <span class="reviewer-role"> - Team Captain</span>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Fast delivery, genuine products, and great prices. Highly recommended!"</p>
+                    <span class="reviewer">Usman Tariq</span>
+                    <span class="reviewer-role"> - Regular Customer</span>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p>"Very satisfied with my purchase. Quality exceeded my expectations."</p>
+                    <span class="reviewer">Fahad Sheikh</span>
+                    <span class="reviewer-role"> - Cricket Enthusiast</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <div class="section-divider"></div>
+                <p>We'd love to hear from you. Reach out anytime!</p>
+            </div>
+            <div class="contact-wrapper">
+                <form onsubmit="sendContactForm(event)">
+                    <label for="contactName">Full Name</label>
+                    <input type="text" id="contactName" placeholder="Enter your name" required>
+                    <label for="contactEmail">Email Address</label>
+                    <input type="email" id="contactEmail" placeholder="Enter your email" required>
+                    <label for="contactPhone">Phone Number</label>
+                    <input type="tel" id="contactPhone" placeholder="Enter your phone number">
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" placeholder="Write your message here..." required></textarea>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>RS Sports</h3>
+                    <p class="footer-about">Your premier destination for quality cricket equipment at affordable prices. Serving cricket lovers across Pakistan.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com" target="_blank" title="Facebook">f</a>
+                        <a href="https://instagram.com" target="_blank" title="Instagram">&#128247;</a>
+                        <a href="https://twitter.com" target="_blank" title="Twitter">&#120143;</a>
+                        <a href="https://youtube.com" target="_blank" title="YouTube">&#9654;</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#why-us">Why Us</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Product Categories</h3>
+                    <ul>
+                        <li><a href="#products" onclick="filterCategory('bat')">Cricket Bats</a></li>
+                        <li><a href="#products" onclick="filterCategory('ball')">Cricket Balls</a></li>
+                        <li><a href="#products" onclick="filterCategory('gloves')">Batting Gloves</a></li>
+                        <li><a href="#products" onclick="filterCategory('helmet')">Helmets</a></li>
+                        <li><a href="#products" onclick="filterCategory('pads')">Batting Pads</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>0346-0206227</li>
+                        <li>info@rssports.pk</li>
+                        <li>Lahore, Pakistan</li>
+                        <li>Mon-Sat: 10AM - 8PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RS Sports. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+    <a href="https://wa.me/923460206227?text=Hello%20RS%20Sports!%20I%20want%20to%20know%20more%20about%20your%20products."
+    class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.004 3.2C8.94 3.2 3.2 8.94 3.2 16.004c0 2.26.59 4.46 1.71 6.4L3.2 28.8l6.59-1.73a12.7 12.7 0 0 0 6.21 1.6h.005c7.06 0 12.8-5.74 12.8-12.8s-5.74-12.67-12.8-12.67zm0 23.36h-.004a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-3.91 1.03 1.04-3.81-.25-.4a10.55 10.55 0 0 1-1.63-5.67c0-5.87 4.78-10.64 10.65-10.64 2.84 0 5.51 1.11 7.52 3.12a10.57 10.57 0 0 1 3.11 7.53c0 5.87-4.78 10.55-10.64 10.55zm5.84-7.96c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.71.16-.21.32-.82 1.04-1.01 1.25-.18.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.58-.95-.85-1.59-1.9-1.78-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.97-2.34-.26-.61-.52-.53-.71-.54h-.61c-.21 0-.56.08-.85.4-.29.32-1.12 1.09-1.12 2.66 0 1.57 1.14 3.08 1.3 3.29.16.21 2.25 3.44 5.45 4.82.76.33 1.36.53 1.82.67.77.24 1.46.21 2.01.13.61-.09 1.89-.77 2.16-1.52.27-.75.27-1.39.19-1.52-.08-.13-.29-.21-.61-.37z"/>
+    </svg>
+</a>
+
+<!-- ===== CHATBOT TOGGLE ===== -->
+<button class="chatbot-toggle" onclick="toggleChatbot()" title="AI Assistant">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        <path d="M8 10h.01M12 10h.01M16 10h.01"/>
+    </svg>
+</button>
+
+<!-- ===== CHATBOT WINDOW ===== -->
+<div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+        <span>RS Sports Assistant</span>
+        <button onclick="toggleChatbot()">&times;</button>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages"></div>
+    <div class="chatbot-input">
+        <input type="text" id="chatbotInput" placeholder="Ask about products, prices..." onkeypress="if(event.key==='Enter')sendChatMessage()">
+        <button onclick="sendChatMessage()">Send</button>
+    </div>
+</div>
+
+<!-- ===== CART OVERLAY & DRAWER ===== -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+        <h3>Shopping Cart</h3>
+        <button class="cart-close" onclick="closeCart()">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span>Total:</span>
+            <span class="total-amount" id="cartTotalAmount">Rs. 0</span>
+        </div>
+        <button class="cart-checkout" onclick="checkoutCart()">Proceed to Checkout</button>
+    </div>
+</div>
+
+<script>
+    // ===== THEME MANAGEMENT =====
+    let currentTheme = localStorage.getItem('rsTheme') || 'light';
+
+    function setTheme(theme) {
+        currentTheme = theme;
+        document.body.setAttribute('data-theme', theme);
+        localStorage.setItem('rsTheme', theme);
+        document.getElementById('themeDropdown').classList.remove('open');
+        document.querySelectorAll('.theme-option').forEach(opt => {
+            opt.classList.toggle('active-theme', opt.dataset.theme === theme);
+        });
+    }
+
+    function toggleThemeDropdown() {
+        document.getElementById('themeDropdown').classList.toggle('open');
+    }
+
+    // Close theme dropdown on outside click
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.theme-selector')) {
+            document.getElementById('themeDropdown').classList.remove('open');
+        }
+    });
+
+    // Load saved theme
+    setTheme(currentTheme);
+
+    // ===== NAVIGATION =====
+    function toggleMobileMenu() {
+        document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    function setActive(el) {
+        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+        el.classList.add('active');
+        document.getElementById('navLinks').classList.remove('open');
+    }
+
+    function setActiveLink(sectionId) {
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('href') === '#' + sectionId) {
+                a.classList.add('active');
+            }
+        });
+    }
+
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Scroll spy for active nav link
+    const sections = document.querySelectorAll('.section, .hero');
+    const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const top = section.offsetTop - 100;
+            if (window.scrollY >= top) {
+                current = section.getAttribute('id');
+            }
+        });
+        navAnchors.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+        });
+    });
+
+    // ===== ANIMATED TEXT =====
+    const phrases = [
+        'Premium Cricket Equipment',
+        'Affordable Prices Under Rs. 5000',
+        'Fast Nationwide Delivery',
+        'Trusted by Cricket Players',
+        'Quality You Can Rely On',
+        'Your Cricket Partner'
+    ];
+    let phraseIdx = 0;
+    let charIdx = 0;
+    let deleting = false;
+
+    function animateText() {
+        const el = document.getElementById('animatedText');
+        const current = phrases[phraseIdx];
+        if (deleting) {
+            charIdx--;
+            if (charIdx < 0) {
+                deleting = false;
+                phraseIdx = (phraseIdx + 1) % phrases.length;
+            }
+        } else {
+            charIdx++;
+            if (charIdx > current.length) {
+                deleting = true;
+                setTimeout(animateText, 2200);
+                return;
+            }
+        }
+        el.innerHTML = current.substring(0, charIdx) + '<span class="typing-cursor"></span>';
+        setTimeout(animateText, deleting ? 45 : 90);
+    }
+    animateText();
+
+    // ===== PRODUCTS DATA =====
+    const products = [
+        { id: 1, name: 'English Willow Cricket Bat', price: 6999, oldPrice: 8999,
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmYfUpXXrjSOsWGIyE4acNSrExIqy1IBJr2n4nWSzUDg&s=10', badge: 'Sale',
+            badgeClass: 'sale', category: 'bat' },
+        { id: 2, name: 'Leather Cricket Ball (Pack of 6)', price: 1499, oldPrice: 2499,
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSVdbe6ODAMbKpJl4x7Y3BbJmyNNsSypFWJ1ql5-7I3Q&s', badge: 'New',
+            badgeClass: 'new', category: 'ball' },
+        { id: 3, name: 'Pro Batting Gloves', price: 1599, oldPrice: 3499,
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUxPH7FHeWiLI0zaY6hZtA-coy3QFINjmreGrE9vxtRA&s=10', badge: 'Sale',
+            badgeClass: 'sale', category: 'gloves' },
+        { id: 4, name: 'Cricket Helmet Pro', price: 4499, oldPrice: 5999,
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkQa1RhQO5koS7v8Q1s4Lsg6IrZ1mhwzMvjxAfuEMrbg&s=10', badge: 'Best Seller',
+            badgeClass: 'sale', category: 'helmet' },
+        { id: 5, name: 'Cricket Kit Bag', price: 3999, oldPrice: 5499,
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1EqZ6egAdvkQE7WU4EVwXv4TcypXV6uxkO9lFLtGOPQ&s=10', badge: 'New',
+            badgeClass: 'new', category: 'bag' },
+        { id: 6, name: 'Cricket Batting Pads', price: 2999, oldPrice: 3999,
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBvouzB-1pk040EfmL2xvTlVPgFRGVE_c8iADBY4GhGA&s=10', badge: 'Sale',
+            badgeClass: 'sale', category: 'pads' },
+        { id: 7, name: 'Cricket Shoes Pro', price: 3499, oldPrice: 4999,
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6Tw-1yywAG2EMvjqLLwPC0vcFRg5E6DGHdn5_eWRp1w&s=10', badge: 'Popular',
+            badgeClass: 'sale', category: 'shoes' },
+        { id: 8, name: 'Wooden Stumps Set', price: 1999, oldPrice: 2799,
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRa3-Ea0ESdMiDKeB-oQzYEdMbj3HVZW-fgpLZqegPJw&s=10', badge: 'New',
+            badgeClass: 'new', category: 'stumps' },
+        { id: 9, name: 'tape ball bats', price: 2799, oldPrice: 3799,
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-SI2yrEm1uUCmzp4rfIOwIsF8ZqBLPxVGTYib24oA1g&s=10', badge: 'Sale',
+            badgeClass: 'sale', category: 'gloves' },
+        { id: 10, name: 'Cricket Accessories Kit', price: 999, oldPrice: 1499,
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu3fcpN8F30B_YttVOyjgFHrCj_hZGsVLFtxUwb7NVAg&s=10', badge: 'Value Pack',
+            badgeClass: 'new', category: 'accessories' }
+    ];
+
+    // ===== RENDER PRODUCTS =====
+    function renderProducts(filter = '') {
+        const container = document.getElementById('productsGrid');
+        let filtered = products;
+        if (filter) {
+            const q = filter.toLowerCase();
+            filtered = products.filter(p =>
+                p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)
+            );
+        }
+        if (filtered.length === 0) {
+            container.innerHTML =
+                '<p style="text-align:center;color:var(--text-secondary);width:100%;padding:40px;font-size:14px;">No products found matching your search.</p>';
+            return;
+        }
+        container.innerHTML = filtered.map(p => `
+            <div class="product-card" onclick="showProductQuickView(${p.id})">
+                <div class="product-image">
+                    <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSbQ9f22ExUSmqAJE6FEu1XQiz4exsbsrpnhiVXwRgSw&s=10'">
+                    <span class="product-badge ${p.badgeClass}">${p.badge}</span>
+                </div>
+                <div class="product-info">
+                    <h3>${p.name}</h3>
+                    <div class="product-price">Rs. ${p.price.toLocaleString()}</div>
+                    <div class="product-old-price">Rs. ${p.oldPrice.toLocaleString()}</div>
+                    <div class="product-buttons">
+                        <button class="btn-buy" onclick="event.stopPropagation();buyNow(${p.id})">Buy Now</button>
+                        <button class="btn-cart" onclick="event.stopPropagation();addToCart(${p.id})">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function showProductQuickView(id) {
+        const p = products.find(x => x.id === id);
+        if (p) {
+            alert(
+                `${p.name}\n\nPrice: Rs. ${p.price.toLocaleString()}\nOld Price: Rs. ${p.oldPrice.toLocaleString()}\n\nClick "Buy Now" to order via WhatsApp or "Add to Cart" to save for later.`);
+        }
+    }
+
+    function handleSearch(value) {
+        if (value.trim()) {
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+            renderProducts(value);
+            setActiveLink('products');
+        } else {
+            renderProducts();
+        }
+    }
+
+    function filterCategory(cat) {
+        document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        renderProducts(cat);
+        setActiveLink('products');
+    }
+
+    // ===== CART MANAGEMENT =====
+    let cart = JSON.parse(localStorage.getItem('rsCart') || '[]');
+
+    function addToCart(id) {
+        const p = products.find(x => x.id === id);
+        if (!p) return;
+        const existing = cart.find(c => c.id === id);
+        if (existing) {
+            existing.qty++;
+        } else {
+            cart.push({ ...p, qty: 1 });
+        }
+        saveCartState();
+        updateCartBadge();
+        alert('Added to cart: ' + p.name);
+    }
+
+    function removeFromCart(id) {
+        cart = cart.filter(c => c.id !== id);
+        saveCartState();
+        updateCartBadge();
+        renderCart();
+    }
+
+    function updateQty(id, delta) {
+        const item = cart.find(c => c.id === id);
+        if (item) {
+            item.qty += delta;
+            if (item.qty <= 0) {
+                removeFromCart(id);
+                return;
+            }
+            saveCartState();
+            updateCartBadge();
+            renderCart();
+        }
+    }
+
+    function saveCartState() {
+        localStorage.setItem('rsCart', JSON.stringify(cart));
+    }
+
+    function updateCartBadge() {
+        const count = cart.reduce((sum, c) => sum + c.qty, 0);
+        document.getElementById('cartBadge').textContent = count;
+    }
+
+    function openCart() {
+        document.getElementById('cartOverlay').classList.add('open');
+        document.getElementById('cartDrawer').classList.add('open');
+        renderCart();
+    }
+
+    function closeCart() {
+        document.getElementById('cartOverlay').classList.remove('open');
+        document.getElementById('cartDrawer').classList.remove('open');
+    }
+
+    function renderCart() {
+        const container = document.getElementById('cartItems');
+        const totalEl = document.getElementById('cartTotalAmount');
+        if (cart.length === 0) {
+            container.innerHTML = '<p class="cart-empty">Your cart is empty. Browse products to add items.</p>';
+            totalEl.textContent = 'Rs. 0';
+            return;
+        }
+        let total = 0;
+        container.innerHTML = cart.map(c => {
+            total += c.price * c.qty;
+            return `
+                <div class="cart-item">
+                    <img src="${c.image}" alt="${c.name}" onerror="this.src='data:image/jpeg;base64,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'">
+                    <div class="cart-item-info">
+                        <h4>${c.name}</h4>
+                        <span class="cart-price">Rs. ${(c.price * c.qty).toLocaleString()}</span>
+                    </div>
+                    <div class="cart-item-actions">
+                        <button class="qty-btn" onclick="updateQty(${c.id},-1)">-</button>
+                        <span class="qty-display">${c.qty}</span>
+                        <button class="qty-btn" onclick="updateQty(${c.id},1)">+</button>
+                        <button class="cart-remove" onclick="removeFromCart(${c.id})" title="Remove">&times;</button>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        totalEl.textContent = 'Rs. ' + total.toLocaleString();
+    }
+
+    function checkoutCart() {
+        if (cart.length === 0) {
+            alert('Your cart is empty. Please add products first.');
+            return;
+        }
+        let msg = 'Order from RS Sports:\n\n';
+        let total = 0;
+        cart.forEach(c => {
+            msg += `${c.name} x${c.qty} = Rs. ${(c.price * c.qty).toLocaleString()}\n`;
+            total += c.price * c.qty;
+        });
+        msg += `\nTotal: Rs. ${total.toLocaleString()}\n\nI want to place this order.`;
+        const url = 'https://wa.me/923460206227?text=' + encodeURIComponent(msg);
+        window.open(url, '_blank');
+    }
+
+    function buyNow(id) {
+        const p = products.find(x => x.id === id);
+        if (!p) return;
+        const msg =
+            `I want to buy this product:\n\n${p.name}\nPrice: Rs. ${p.price.toLocaleString()}\n\nPlease confirm my order.`;
+        const url = 'https://wa.me/923460206227?text=' + encodeURIComponent(msg);
+        window.open(url, '_blank');
+    }
+
+    // ===== CONTACT FORM =====
+    function sendContactForm(e) {
+        e.preventDefault();
+        const name = document.getElementById('contactName').value;
+        const email = document.getElementById('contactEmail').value;
+        const phone = document.getElementById('contactPhone').value;
+        const message = document.getElementById('contactMessage').value;
+        const msg =
+            `New Contact Message:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nMessage: ${message}`;
+        const url = 'https://wa.me/923460206227?text=' + encodeURIComponent(msg);
+        window.open(url, '_blank');
+        alert('Your message has been sent. We will contact you soon.');
+        e.target.reset();
+    }
+
+    // ===== CHATBOT =====
+    function toggleChatbot() {
+        const win = document.getElementById('chatbotWindow');
+        win.classList.toggle('open');
+        if (win.classList.contains('open') && document.getElementById('chatbotMessages').children.length === 0) {
+            setTimeout(() => {
+                addChatMessage('bot',
+                    'Hello! Welcome to RS Sports. I can help with product info, prices, delivery, and more. What would you like to know?'
+                    );
+            }, 300);
+        }
+    }
+
+    function addChatMessage(sender, text) {
+        const container = document.getElementById('chatbotMessages');
+        const div = document.createElement('div');
+        div.className = 'chat-message ' + sender;
+        div.innerHTML = text.replace(/\n/g, '<br>');
+        container.appendChild(div);
+        container.scrollTop = container.scrollHeight;
+    }
+
+    function sendChatMessage() {
+        const input = document.getElementById('chatbotInput');
+        const msg = input.value.trim().toLowerCase();
+        if (!msg) return;
+        addChatMessage('user', input.value);
+        input.value = '';
+        let reply = '';
+        if (msg.includes('bat') || msg.includes('bats')) {
+            reply = 'We have English Willow bats at Rs. 4,999. Premium quality, hand-picked for performance.';
+        } else if (msg.includes('ball') || msg.includes('balls')) {
+            reply = 'Leather cricket balls in packs of 6 at Rs. 1,499. Match-grade quality.';
+        } else if (msg.includes('price') || msg.includes('cost') || msg.includes('kitna') || msg.includes(
+                'kimaat')) {
+            reply = 'Our prices range from Rs. 999 (Accessories Kit) to Rs. 4,999 (Premium Bat). All under Rs. 5,000!';
+        } else if (msg.includes('glove') || msg.includes('gloves')) {
+            reply = 'Batting gloves at Rs. 2,499 and Wicket Keeping gloves at Rs. 2,799. Professional grade.';
+        } else if (msg.includes('helmet') || msg.includes('head')) {
+            reply = 'Cricket Helmets at Rs. 4,499 with superior protection and comfort.';
+        } else if (msg.includes('delivery') || msg.includes('shipping') || msg.includes('deliver')) {
+            reply = 'We offer fast delivery across Pakistan. Major cities get delivery within 24-48 hours.';
+        } else if (msg.includes('order') || msg.includes('buy') || msg.includes('kharid')) {
+            reply =
+                'You can order via our website. Click "Buy Now" for WhatsApp ordering or "Add to Cart" for multiple items.';
+        } else if (msg.includes('whatsapp') || msg.includes('contact') || msg.includes('phone') || msg.includes(
+                'number')) {
+            reply = 'Our WhatsApp number is 0346-0206227. Available Mon-Sat, 10AM to 8PM.';
+        } else if (msg.includes('location') || msg.includes('address') || msg.includes('kahan') || msg.includes(
+                'store')) {
+            reply = 'We are located in Lahore, Pakistan. We ship nationwide.';
+        } else if (msg.includes('return') || msg.includes('refund') || msg.includes('exchange')) {
+            reply = 'We have a 7-day hassle-free return policy. Contact us for refunds or exchanges.';
+        } else if (msg.includes('hello') || msg.includes('hi') || msg.includes('salam') || msg.includes('hey') ||
+            msg.includes('assalam')) {
+            reply = 'Hello! How can I help you today? Ask about products, prices, delivery, or anything else.';
+        } else if (msg.includes('thank') || msg.includes('shukriya') || msg.includes('great') || msg.includes(
+                'good')) {
+            reply = 'You\'re welcome! Is there anything else I can help with?';
+        } else if (msg.includes('service') || msg.includes('services')) {
+            reply =
+                'We offer bat repair, equipment rental, team uniforms, coaching, bulk orders, and tournament support.';
+        } else {
+            reply =
+                'I\'m not sure about that. Try asking about: Products, Prices, Delivery, Location, Returns, or Contact info.';
+        }
+        setTimeout(() => addChatMessage('bot', reply), 500);
+    }
+
+    // ===== INITIALIZATION =====
+    renderProducts();
+    updateCartBadge();
+    renderCart();
+</script>
+</body>
+</html>
